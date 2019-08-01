@@ -7,13 +7,13 @@ using KtMvc.Domain.BizValidation;
 
 namespace KtMvc.Domain.Service
 {
-    public interface IService<T, TRepository>
+    public interface IService<TEntity, IEntityRepository>
     {
-        TRepository DomainRepository { get; }
-        T Get(int id);
-        IEnumerable<T> GetAll();
-        Validation Add(T entity);
-        Validation Update(T entity);
+        IEntityRepository DomainRepository { get; }
+        TEntity Get(int id);
+        IEnumerable<TEntity> GetAll();
+        Validation Add(TEntity entity);
+        Validation Update(TEntity entity);
         Validation Delete(int id);
     }
 }

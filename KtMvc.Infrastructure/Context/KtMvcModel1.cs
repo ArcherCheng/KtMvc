@@ -23,16 +23,17 @@ namespace KtMvc.Infrastructure.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
-                .HasMany(e => e.Products)
-                .WithOptional(e => e.Category)
-                .WillCascadeOnDelete();
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            //modelBuilder.Entity<Category>()
+            //    .HasMany(e => e.Products)
+            //    .WithOptional(e => e.Category)
+            //    .WillCascadeOnDelete();
 
             modelBuilder.Entity<Product>()
                 .HasOptional(e => e.ProductHolding)
                 .WithRequired(e => e.Product);
 
-            // modelBuilder.Configurations.Add(new CustomerConfiguration);
+            // modelBuilder.Configurations.Add(new CustomerConfiguration());
         }
     }
 }

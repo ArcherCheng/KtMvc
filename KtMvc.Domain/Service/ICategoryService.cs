@@ -8,8 +8,8 @@ using KtMvc.Domain.Repository;
 
 namespace KtMvc.Domain.Service
 {
-    public interface ICategoryService:IService<Category,ICategoryRepository>
+    public interface ICategoryService : IService<Category,ICategoryRepository>
     {
-        IEnumerable<Category> categories(string name);
+        IEnumerable<Category> GetCategories(string name);
     }
 }

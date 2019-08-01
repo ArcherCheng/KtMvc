@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KtMvc.Domain.Models
 {
-    public abstract class EntityAggregateRootBase<T> : EntityBase<T>, IAggregateRoot
+    public abstract class EntityAggregateRootBase<Type> : EntityBase<Type>, IAggregateRoot
     {
     }
 }

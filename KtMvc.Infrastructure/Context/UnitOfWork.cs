@@ -9,8 +9,13 @@ namespace KtMvc.Infrastructure.Context
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private KtMvcModel1 db;
-    
+        private KtMvcModel1 db = new KtMvcModel1();
+     
+        public void RegisterRepository(IUnitOfWorkRepository repository)
+        {
+            repository.context = db;
+        }
+
         public void Commit()
         {
             db.SaveChanges();
@@ -22,6 +27,7 @@ namespace KtMvc.Infrastructure.Context
         }
 
         private bool disposedValue = false;
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -33,9 +39,5 @@ namespace KtMvc.Infrastructure.Context
             }
         }
 
-        public void RegisterRepository(IUnitOfWorkRepository repository)
-        {
-            repository.context = db;
-        }
     }
 }

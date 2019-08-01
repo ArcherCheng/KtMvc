@@ -11,7 +11,7 @@ using KtMvc.Application.Dtos;
 
 namespace KtMvc.Application.Service
 {
-    class ProductAService : ApplicationService<Product, IProductRepository, IProductService>, IProductAService
+    public class ProductAService : ApplicationService<Product, IProductRepository, IProductService>, IProductAService
     {
         public ProductAService(IProductService service, IUnitOfWork unitOfWork) : base(service, unitOfWork)
         {

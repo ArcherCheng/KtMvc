@@ -9,22 +9,22 @@ using KtMvc.Domain.Repository;
 
 namespace KtMvc.Domain.Service
 {
-    public class DomainService<T, TRespository> : IService<T, TRespository>
-        where T : EntityBase<T>
-        where TRespository : IRepository<T>
+    public class DomainService<TEntity, IEntityRespository> : IService<TEntity, IEntityRespository>
+        where TEntity : EntityBase<int>
+        where IEntityRespository : IRepository<TEntity>
     {
-        protected TRespository _repository ;
-        public DomainService(TRespository repository)
+        protected IEntityRespository _repository ;
+        public DomainService(IEntityRespository repository)
         {
             _repository = repository;
         }
 
-        public TRespository DomainRepository
+        public IEntityRespository DomainRepository
         {
             get { return _repository; }
         }
 
-        public Validation Add(T entity)
+        public Validation Add(TEntity entity)
         {
             var validation = entity.Validate();
             if (!(validation.GetRules().Count() > 0))
@@ -44,7 +44,7 @@ namespace KtMvc.Domain.Service
 
         }
 
-        private Validation ValidateExistingEntry(T entity)
+        protected Validation ValidateExistingEntry(TEntity entity)
         {
             Validation validation = new Validation();
             if(entity == null)
@@ -54,19 +54,19 @@ namespace KtMvc.Domain.Service
             return validation;
         }
 
-        public T Get(int id)
+        public TEntity Get(int id)
         {
-            T entity = _repository.FindById(id);
+            TEntity entity = _repository.FindById(id);
             return entity;
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             var list = _repository.FindAll();
             return list;
         }
 
-        public Validation Update(T entity)
+        public Validation Update(TEntity entity)
         {
             var validation = entity.Validate();
             if (!(validation.GetRules().Count() > 0))

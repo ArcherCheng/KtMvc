@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace KtMvc.Infrastructure.Repository 
 {
-    class CustomerRepository : EntityRepository<Customer>, ICustomerRepository
+    public class CustomerRepository : EntityRepository<Customer>, ICustomerRepository
     {
         public IEnumerable<Customer> FindByName(string name)
         {

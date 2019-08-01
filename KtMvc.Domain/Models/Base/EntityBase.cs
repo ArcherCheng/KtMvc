@@ -7,18 +7,25 @@ using KtMvc.Domain.BizValidation;
 
 namespace KtMvc.Domain.Models
 {
-    public abstract class EntityBase<T> : IEqualityComparer<EntityBase<T>>
+    public abstract class EntityBase<Type> : IEqualityComparer<EntityBase<Type>>
     {
-        public T EngtityId { get; set; }
+        public Type EntityId { get; set; }
 
-        public bool Equals(EntityBase<T> x, EntityBase<T> y)
+        public bool Equals(EntityBase<Type> x, EntityBase<Type> y)
         {
-            throw new NotImplementedException();
+            return x.EntityId.ToString() == y.EntityId.ToString();
         }
 
-        public int GetHashCode(EntityBase<T> obj)
+        public int GetHashCode(EntityBase<Type> obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return obj.EntityId.GetHashCode();
+            }
         }
 
         public abstract Validation Validate(); 

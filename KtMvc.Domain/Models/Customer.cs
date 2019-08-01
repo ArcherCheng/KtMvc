@@ -12,7 +12,7 @@ namespace KtMvc.Domain.Models
         public Customer()
         {
             Orders = new HashSet<Order>();
-            Address = new AddressInfo();
+            // Address = new AddressInfo();
         }
 
         public int CustomerID { get; set; }
@@ -28,19 +28,19 @@ namespace KtMvc.Domain.Models
         [StringLength(250)]
         public string Email { get; set; }
 
-        //[StringLength(10)]
-        //public string PostalCode { get; set; }
+        [StringLength(10)]
+        public string PostalCode { get; set; }
 
-        //[StringLength(50)]
-        //public string City { get; set; }
+        [StringLength(50)]
+        public string City { get; set; }
 
-        //[StringLength(500)]
-        //public string AddressLine { get; set; }
+        [StringLength(500)]
+        public string AddressLine { get; set; }
 
-        //[StringLength(50)]
-        //public string Dist { get; set; }
+        [StringLength(50)]
+        public string Dist { get; set; }
 
-        public AddressInfo Address { get; set; }
+        // public AddressInfo Address { get; set; }
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

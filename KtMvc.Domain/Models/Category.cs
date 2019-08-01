@@ -14,7 +14,7 @@ namespace KtMvc.Domain.Models
             Products = new HashSet<Product>();
         }
 
-        public int CategoryID { get; set; }
+        // public int CategoryID { get; set; }
 
         [Required]
         [StringLength(20)]

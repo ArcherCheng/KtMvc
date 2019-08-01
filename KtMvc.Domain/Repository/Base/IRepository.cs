@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace KtMvc.Domain.Repository
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity>
     {
-        T FindById(int id);
-        IEnumerable<T> FindAll();
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        TEntity FindById(int id);
+        IEnumerable<TEntity> FindAll();
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }
